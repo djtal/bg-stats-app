@@ -6,7 +6,7 @@ DB = Sequel.connect(
   adapter: 'mysql2',
   host: 'localhost',
   user: 'root',
-  database: 'ludomamager_prod_export'
+  database: 'ludo'
 )
 
 f_parties = false
