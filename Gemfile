@@ -1,9 +1,11 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'jbuilder'
-gem 'mysql2'
-gem 'sequel'
-gem 'kiba'
-gem 'kiba-common'
-gem 'oj'
-gem 'awesome_print'
+gem "sequel"
+gem "sqlite3"
+gem "kiba"
+gem "kiba-common"
+gem "oj"
+gem "awesome_print"
+
+gem "tty-option"
+gem "pastel"

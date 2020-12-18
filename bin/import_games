@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+#
+
+require "tty-option"
+require "pastel"
+require_relative "../lib/bg_stats"
+
+class BGStatGameImporter
+  include TTY::Option
+
+  flag :help do
+    short "-h"
+    long "--help"
+    desc "Print usage"
+  end
+
+  flag :database do
+    short "-d"
+    long "--database string"
+    default "bgstats.db"
+    desc "specify database name to use"
+  end
+
+  argument :backup_file do
+    required
+    desc "Export file to read data from"
+  end
+
+  def run
+    if params[:help]
+      print help
+      exit
+    else
+      ap params
+      db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
+      Kiba.run(
+        BGstatBackupImporter.etl(
+          backup_file: params[:backup_file],
+          database: db
+        )
+      )
+    end
+  end
+end
+
+
+cmd = BGStatGameImporter.new
+cmd.parse(raise_on_parse_error: true)
+cmd.run
+

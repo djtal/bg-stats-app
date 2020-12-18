@@ -1,43 +1,31 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.3.4)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 2.2, >= 2.2.2)
     awesome_print (1.8.0)
-    concurrent-ruby (1.1.7)
-    i18n (1.8.5)
-      concurrent-ruby (~> 1.0)
-    jbuilder (2.7.0)
-      activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
-    kiba (2.5.0)
-    kiba-common (0.9.0)
-      kiba (>= 1.0.0, < 3)
-    minitest (5.14.2)
-    multi_json (1.13.1)
-    mysql2 (0.5.0)
-    oj (3.7.12)
-    sequel (5.7.1)
-    thread_safe (0.3.6)
-    tzinfo (1.2.8)
-      thread_safe (~> 0.1)
-    zeitwerk (2.4.1)
+    kiba (3.5.0)
+    kiba-common (1.1.0)
+      kiba (>= 1.0.0, < 4)
+    oj (3.10.17)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    sequel (5.39.0)
+    sqlite3 (1.4.2)
+    tty-color (0.6.0)
+    tty-option (0.1.0)
 
 PLATFORMS
   ruby
+  x86_64-darwin-17
 
 DEPENDENCIES
   awesome_print
-  jbuilder
   kiba
   kiba-common
-  mysql2
   oj
+  pastel
   sequel
+  sqlite3
+  tty-option
 
 BUNDLED WITH
-   1.17.3
+   2.2.0

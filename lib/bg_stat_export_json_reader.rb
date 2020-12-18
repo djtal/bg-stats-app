@@ -1,6 +1,6 @@
 require 'oj'
 
-class BGStatAppExportReader
+class BGStatExportJsonReader
   attr_reader :file, :section
 
   def initialize(file:, section:)

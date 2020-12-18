@@ -1,0 +1,9 @@
+require 'kiba-common/dsl_extensions/show_me'
+require './bg_stat_export_reader'
+
+extend Kiba::Common::DSLExtensions::ShowMe
+
+source BGStatAppExportReader, file: 'BGStatsExport.json', section: 'games'
+
+show_me!
+
