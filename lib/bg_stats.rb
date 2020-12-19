@@ -1,1 +1,1 @@
-require_relative "./bg_stat_backup_importer"
+require_relative "./bg_stat_game_backup_importer"

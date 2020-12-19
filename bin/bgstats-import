@@ -38,12 +38,11 @@ class BGStatsImporter
       print help
       exit
     else
-      ap params
       case params[:command]
       when "games"
         db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
         Kiba.run(
-          BGstatBackupImporter.etl(
+          BGstatGameBackupImporter.etl(
             backup_file: params[:backup_file],
             database: db
           )

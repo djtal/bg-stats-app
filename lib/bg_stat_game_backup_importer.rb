@@ -5,7 +5,7 @@ require "awesome_print"
 require_relative "./bg_stat_export_json_reader"
 require_relative "./sql_destination"
 
-module BGstatBackupImporter
+module BGstatGameBackupImporter
   module_function
 
   def etl(backup_file:, database:)
