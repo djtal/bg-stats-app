@@ -16,6 +16,7 @@ GEM
 PLATFORMS
   ruby
   x86_64-darwin-17
+  x86_64-darwin-18
 
 DEPENDENCIES
   awesome_print
@@ -28,4 +29,4 @@ DEPENDENCIES
   tty-option
 
 BUNDLED WITH
-   2.2.0
+   2.2.2
