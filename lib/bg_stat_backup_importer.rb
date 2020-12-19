@@ -10,6 +10,7 @@ module BGstatBackupImporter
 
   def etl(backup_file:, database:)
     pastel = Pastel.new
+    initial_db_games_count = 0
     Kiba.parse do
       extend Kiba::Common::DSLExtensions::ShowMe
 
@@ -20,11 +21,9 @@ module BGstatBackupImporter
           String :bgg_id
           String :bg_stat_uuid
         end
+        initial_db_games_count = database[:games].count
       end
 
-      pre_process do
-        database[:games]
-      end
 
       source BGStatExportJsonReader, file: backup_file, section: "games"
 
@@ -54,6 +53,15 @@ module BGstatBackupImporter
           puts pastel.red("Error inserting #{row}")
           puts error.inspect
         }
+
+      post_process do
+        imported_games_count = database[:games].count - initial_db_games_count
+        if imported_games_count > 0
+          puts pastel.green("✓ Imported #{imported_games_count} games")
+        else
+          puts "No games imported database already up to date"
+        end
+      end
     end
   end
 end

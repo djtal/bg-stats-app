@@ -31,7 +31,6 @@ class BGStatGameImporter
       print help
       exit
     else
-      ap params
       db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
       Kiba.run(
         BGstatBackupImporter.etl(
