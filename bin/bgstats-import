@@ -30,7 +30,7 @@ class BGStatsImporter
 
   argument :command do
     required
-    permit %w[games]
+    permit %w[games plays]
   end
 
   def run
@@ -39,6 +39,14 @@ class BGStatsImporter
       exit
     else
       case params[:command]
+      when "plays"
+        db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
+        Kiba.run(
+          BGstatPlayBackupImporter.etl(
+            backup_file: params[:backup_file],
+            database: db
+          )
+        )
       when "games"
         db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
         Kiba.run(
