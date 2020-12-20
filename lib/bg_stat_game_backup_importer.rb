@@ -8,6 +8,13 @@ require_relative "./insert_sql_destination"
 module BGstatGameBackupImporter
   module_function
 
+  BACKUP_COLUMNS_DEFINITION = {
+    id: :id,
+    bggId: :bgg_id,
+    uuid:  :bg_stat_uuid,
+    name: :name
+  }
+
   def etl(backup_file:, database:)
     pastel = Pastel.new
     initial_db_games_count = 0
@@ -44,6 +51,13 @@ module BGstatGameBackupImporter
           row["metaData"] = Oj.load(row["metaData"], symbol_key: true)
         end
         row
+      end
+
+      transform do |row|
+        BACKUP_COLUMNS_DEFINITION.inject({}) do |acc, (backup_key, sql_column)|
+          acc[sql_column] = row[backup_key.to_s]
+          acc
+        end
       end
 
       destination InsertSQLDestination,

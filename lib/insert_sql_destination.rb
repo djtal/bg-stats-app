@@ -12,12 +12,7 @@ class InsertSQLDestination
   def write(row)
     database[table_name.to_sym]
       .insert_conflict
-      .insert(
-        id: row["id"],
-        bgg_id: row["bggId"],
-        name: row["name"],
-        bg_stat_uuid: row["uuid"]
-      )
+      .insert(row)
   rescue Sequel::DatabaseError => e
     on_error.call(e, row)
   end
