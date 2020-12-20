@@ -1,6 +1,6 @@
 require "sequel"
 
-class SQLDestination
+class InsertSQLDestination
   attr_reader :database, :table_name, :on_error
 
   def initialize(database:, table_name:, on_error: -> {})

@@ -3,7 +3,7 @@ require "kiba-common/dsl_extensions/show_me"
 require "awesome_print"
 
 require_relative "./bg_stat_export_json_reader"
-require_relative "./sql_destination"
+require_relative "./insert_sql_destination"
 
 module BGstatGameBackupImporter
   module_function
@@ -46,7 +46,7 @@ module BGstatGameBackupImporter
         row
       end
 
-      destination SQLDestination,
+      destination InsertSQLDestination,
         database: database,
         table_name: "games",
         on_error: ->(error, row) {
