@@ -8,6 +8,7 @@ GEM
     oj (3.10.17)
     pastel (0.8.0)
       tty-color (~> 0.5)
+    pg (1.2.3)
     sequel (5.39.0)
     sqlite3 (1.4.2)
     tty-color (0.6.0)
@@ -24,6 +25,7 @@ DEPENDENCIES
   kiba-common
   oj
   pastel
+  pg
   sequel
   sqlite3
   tty-option

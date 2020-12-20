@@ -24,7 +24,7 @@ module BGstatPlayBackupImporter
       pre_process do
         database.create_table! :plays do
           primary_key :id
-          column :game_id, :games, key: :id,  null: false
+          foreign_key :game_id, :games, null: false
           column :played_at, Date
           column :bg_stat_uuid, String
           index :game_id

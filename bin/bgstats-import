@@ -3,6 +3,7 @@
 
 require "tty-option"
 require "pastel"
+require "pg"
 require_relative "../lib/bg_stats"
 
 class BGStatsImporter
@@ -17,7 +18,7 @@ class BGStatsImporter
   flag :database do
     short "-d"
     long "--database string"
-    default "bgstats.db"
+    default "sqlite://bgstats.db"
     desc "specify database name to use"
   end
 
@@ -36,11 +37,11 @@ class BGStatsImporter
   def run
     if params[:help]
       print help
-      exit
+      exi
     else
       case params[:command]
       when "plays"
-        db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
+        db = Sequel.connect(params[:database]) # requires sqlite3
         Kiba.run(
           BGstatPlayBackupImporter.etl(
             backup_file: params[:backup_file],
@@ -48,7 +49,7 @@ class BGStatsImporter
           )
         )
       when "games"
-        db = Sequel.connect("sqlite://#{params[:database]}") # requires sqlite3
+        db = Sequel.connect(params[:database]) # requires sqlite3
         Kiba.run(
           BGstatGameBackupImporter.etl(
             backup_file: params[:backup_file],
