@@ -4,6 +4,7 @@ require "awesome_print"
 
 require_relative "./bg_stat_export_json_reader"
 require_relative "./insert_sql_destination"
+require_relative "./remap_column_name"
 
 module BGstatGameBackupImporter
   module_function
@@ -53,12 +54,8 @@ module BGstatGameBackupImporter
         row
       end
 
-      transform do |row|
-        BACKUP_COLUMNS_DEFINITION.inject({}) do |acc, (backup_key, sql_column)|
-          acc[sql_column] = row[backup_key.to_s]
-          acc
-        end
-      end
+      transform RemapColumnName,
+        column_row_mapping: BACKUP_COLUMNS_DEFINITION
 
       destination InsertSQLDestination,
         database: database,
