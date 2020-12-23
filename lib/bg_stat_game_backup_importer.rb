@@ -28,6 +28,7 @@ module BGstatGameBackupImporter
           String :name
           String :bgg_id
           String :bg_stat_uuid
+          Boolean :cooperative
         end
         initial_db_games_count = database[:games].count
       end

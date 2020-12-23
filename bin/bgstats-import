@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 #
 
+require "bundler/setup"
+require "bg_stats_app"
+
 require "tty-option"
 require "pastel"
 require "pg"
-require_relative "../lib/bg_stats"
 
 class BGStatsImporter
   include TTY::Option

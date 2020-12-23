@@ -1,18 +1,94 @@
+PATH
+  remote: .
+  specs:
+    bg-stats-app (0.1.0)
+      http
+      kiba
+      kiba-common
+      oj
+      pastel
+      pg
+      sequel
+      sqlite3
+      tty-option
+
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.1)
     awesome_print (1.8.0)
+    coderay (1.1.3)
+    diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    ffi (1.14.2)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    http (4.4.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.2)
+      ffi-compiler
     kiba (3.5.0)
     kiba-common (1.1.0)
       kiba (>= 1.0.0, < 4)
+    method_source (1.0.0)
     oj (3.10.17)
+    parallel (1.20.1)
+    parser (2.7.2.0)
+      ast (~> 2.4.1)
     pastel (0.8.0)
       tty-color (~> 0.5)
     pg (1.2.3)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    public_suffix (4.0.6)
+    rainbow (3.0.0)
+    rake (13.0.3)
+    regexp_parser (2.0.1)
+    rexml (3.2.4)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.0)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.0)
+    rubocop (0.93.1)
+      parallel (~> 1.10)
+      parser (>= 2.7.1.5)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8)
+      rexml
+      rubocop-ast (>= 0.6.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
+    rubocop-ast (1.3.0)
+      parser (>= 2.7.1.5)
+    ruby-progressbar (1.10.1)
     sequel (5.39.0)
     sqlite3 (1.4.2)
     tty-color (0.6.0)
     tty-option (0.1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
+    unicode-display_width (1.7.0)
 
 PLATFORMS
   ruby
@@ -21,14 +97,11 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  kiba
-  kiba-common
-  oj
-  pastel
-  pg
-  sequel
-  sqlite3
-  tty-option
+  bg-stats-app!
+  pry (~> 0.13.1)
+  rake (~> 13.0)
+  rspec (~> 3.0)
+  rubocop (~> 0.80)
 
 BUNDLED WITH
-   2.2.2
+   2.2.3

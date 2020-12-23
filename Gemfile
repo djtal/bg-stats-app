@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
-gem "sequel"
-gem "sqlite3"
-gem "pg"
-gem "kiba"
-gem "kiba-common"
-gem "oj"
-gem "awesome_print"
+# Specify your gem's dependencies in bg-stats-app.gemspec
+gemspec
 
-gem "tty-option"
-gem "pastel"
+gem "rake", "~> 13.0"
+
+gem "rspec", "~> 3.0"
+
+gem "rubocop", "~> 0.80"
+
