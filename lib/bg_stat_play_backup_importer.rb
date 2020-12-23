@@ -22,11 +22,11 @@ module BGstatPlayBackupImporter
       extend Kiba::Common::DSLExtensions::ShowMe
 
       pre_process do
-        database.create_table! :plays do
+        database.create_table? :plays do
           primary_key :id
           foreign_key :game_id, :games, null: false
           column :played_at, Date
-          column :bg_stat_uuid, String
+          column :bg_stat_uuid, String, unique: true
           index :game_id
         end
         initial_db_plays_count = database[:plays].count
@@ -40,8 +40,6 @@ module BGstatPlayBackupImporter
         end
         row
       end
-
-      show_me!
 
       transform RemapColumnName,
         column_row_mapping: BACKUP_COLUMNS_DEFINITION
