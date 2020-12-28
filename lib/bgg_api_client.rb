@@ -1,19 +1,24 @@
 require "http"
+require "nokogiri"
 
 class BGGAPIClient
-  BASE_URL = "https://www.boardgamegeek.com/xmlapi2/".freeze
+  BASE_URL = "https://api.geekdo.com/xmlapi2".freeze
 
   attr_reader :http
 
   def initialize
-    @http = HTTP.persistent BASE_URL
   end
 
   def get(thing:, id:)
-    http.get("/thing", params: { thing: thing, id: id }).flush
+    HTTP
+      .headers(accept: "application/xml")
+      .get("#{BASE_URL}/thing", params: { id: id })
   end
 
   def get_game(id:)
-    get(thing: :game, id: id)
+    res = get(thing: :game, id: id)
+    if res.status.success?
+      Nokogiri::XML(res.body)
+    end
   end
 end

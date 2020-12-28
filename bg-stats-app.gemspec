@@ -39,6 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "tty-option"
   spec.add_dependency "pastel"
   spec.add_dependency "http"
+  spec.add_dependency "nokogiri"
 
   spec.add_development_dependency "awesome_print"
   spec.add_development_dependency "pry", "~> 0.13.1"
